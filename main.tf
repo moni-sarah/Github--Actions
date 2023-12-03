@@ -27,7 +27,7 @@ resource "storage_account_name" "sa_name"{
     resource_groupe_name = azurerm_resource_group.test_resource_name1.name
     location              = azurerm_resourc_group.test_resource_name1.local
     account_tier = "Standard"
-    account_replication_type = "LRS"
+    account_replication_type = "GRS"
     
 
     static_website {
