@@ -1,11 +1,19 @@
 name: web-Terraform CI/CD
 # Controls when workflow o will run 
 on:
-workingflow_dispatch:  # Triggers the workflow on push
-  push:
+ push:
     branches:
       - main
 
+ workingflow_dispatch:  # Triggers the workflow on push
+ inputs:
+ action_type:
+ type: choice
+ option:
+  -'apply'
+  -'destroy'
+
+  
 
 jobs:
   deploy:
@@ -17,7 +25,7 @@ env:
  ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID}}
  ARM_TENANT_ID: ${{ secrets.AZURE.TENANT_ID}}
  ARM_CLIENT_SECRET:  ${{ secrets.AZURE_CLIENT_SECRET }}
- WORKING_DIR:  /C:\Users\sarah\OneDrive\IT-Drift-3Semester\Infrastur-AS-Code\IAC-TERRAFORM
+ WORKING_DIR:    /C:\Users\sarah\OneDrive\IT-Drift-3Semester\Infrastur-AS-Code\IAC-TERRAFORM
 
  # Steps represent  the tasks  that will be executed 
    steps:
