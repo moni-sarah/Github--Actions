@@ -1,0 +1,40 @@
+name: web-Terraform CI/CD
+# Controls when workflow o will run 
+on:
+workingflow_dispatch:  # Triggers the workflow on push
+  push:
+    branches:
+      - main
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+
+env:
+ ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID}}
+ ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID}}
+ ARM_TENANT_ID: ${{ secrets.AZURE.TENANT_ID}}
+ ARM_CLIENT_SECRET:  ${{ secrets.AZURE_CLIENT_SECRET }}
+ WORKING_DIR:  /C:\Users\sarah\OneDrive\IT-Drift-3Semester\Infrastur-AS-Code\IAC-TERRAFORM
+
+ # Steps represent  the tasks  that will be executed 
+   steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+ 
+   
+# Runs a single command using runners shell
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Plan
+      run: terraform plan
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+
+    - name: Terraform Destroy (Optional)
+      run: terraform destroy -auto-approve
+      working-directory: ${{env.WORKING_DIR}}
