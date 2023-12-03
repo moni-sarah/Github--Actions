@@ -3,6 +3,7 @@
 -Lag et nytt GitHub-repositorium med navn som "GITHUB-ACTIONS"
 Legg til en .env-fil  for å lagre Azure Environment-variabler. Dette kan inkludere ting som ARM_CLIENT_ID, ARM_CLIENT_SECRET, ARM_SUBSCRIPTION_ID, ARM_TENANT_ID.
  Legge til .env i .gitignore for å unngå å laste opp sensitiv informasjon til GitHub.
+ ![Github repo ](pic01.bmp)
 
 ## Del 2: Konfigurere Terraform Backend for tfstate-fil
 Jeg har Opprettet en Terraform-konfigurasjonsfil  "backend.tf" og konfigurer backend for å lagre tfstate-filen. 
